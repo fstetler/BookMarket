@@ -33,4 +33,14 @@ public class AuthorController {
         return authorService.getAuthorByPseudonym(pseudonym).orElse(null);
     }
 
+    @DeleteMapping(path = "{pseudonym}")
+    public void deleteAuthorByPseudonym(@PathVariable("pseudonym") String pseudonym) {
+        authorService.deleteAuthorByPseudonym(pseudonym);
+    }
+
+    @PutMapping(path = "{pseudonym}")
+    public void updateAuthorByPseudonym(@PathVariable("pseudonym") String pseudonym, @RequestBody Author author) {
+        authorService.updateAuthorByPseudonym(pseudonym, author);
+    }
+
 }

@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.AuthorDao;
-import com.example.demo.dao.BookDao;
 import com.example.demo.model.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class AuthorService {
@@ -33,5 +31,12 @@ public class AuthorService {
         return authorDao.selectAuthorByPseudonym(pseudynom);
     }
 
+    public int deleteAuthorByPseudonym(String pseudonym) {
+        return authorDao.deleteAuthorByPseudonym(pseudonym);
+    }
+
+    public int updateAuthorByPseudonym(String pseudonym, Author author) {
+        return authorDao.updateAuthorByPseudonym(pseudonym, author);
+    }
 
 }

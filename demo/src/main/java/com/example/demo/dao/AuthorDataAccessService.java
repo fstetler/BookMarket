@@ -54,22 +54,50 @@ public class AuthorDataAccessService implements AuthorDao, BookDao {
 
     @Override
     public int deleteBookByTitle(String title) {
-        return 0;
+        Optional<Book> bookMaybe = selectBookByTitle(title);
+        if (bookMaybe.isEmpty()) {
+            return 0;
+        }
+        DBBook.remove(bookMaybe.get());
+        return 1;
     }
 
     @Override
     public int deleteAuthorByPseudonym(String pseudonym) {
-        return 0;
+        Optional<Author> authorMaybe = selectAuthorByPseudonym(pseudonym);
+        if (authorMaybe.isEmpty()) {
+            return 0;
+        }
+        DBAuthor.remove(authorMaybe.get());
+        return 1;
     }
 
     @Override
     public int updateBookByTitle(String title, Book book) {
-        return 0;
+        return selectBookByTitle(title)
+                .map(p -> {
+                    int indexOfBookToDelete = DBBook.indexOf(book);
+                    if (indexOfBookToDelete >= 0) {
+                        DBBook.set(indexOfBookToDelete, book);
+                        return 1;
+                    }
+                    return 0;
+                })
+                .orElse(0);
     }
 
     @Override
     public int updateAuthorByPseudonym(String pseudonym, Author author) {
-        return 0;
+        return selectAuthorByPseudonym(pseudonym)
+                .map(a -> {
+                    int indexOfAuthorToDelete = DBAuthor.indexOf(author);
+                    if (indexOfAuthorToDelete >= 0) {
+                        DBAuthor.set(indexOfAuthorToDelete, author);
+                        return 1;
+                    }
+                    return 0;
+                })
+                .orElse(0);
     }
 
 

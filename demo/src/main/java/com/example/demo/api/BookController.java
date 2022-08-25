@@ -34,4 +34,14 @@ public class BookController {
     public Book getBookByTitle(@PathVariable("title") String title) {
         return bookService.getBookByTitle(title).orElse(null);
     }
+
+    @DeleteMapping(path = "{title}")
+    public void deleteBookByTitle(@PathVariable("title") String title) {
+        bookService.deleteBookByTitle(title);
+    }
+
+    @PutMapping
+    public void updateBookByTitle(@PathVariable("pseudonym") String pseudonym, @RequestBody Book book) {
+        bookService.updateBookByTitle(pseudonym, book);
+    }
 }

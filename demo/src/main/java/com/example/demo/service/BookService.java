@@ -31,5 +31,12 @@ public class BookService {
         return bookDao.selectBookByTitle(title);
     }
 
+    public int deleteBookByTitle(String title) {
+        return bookDao.deleteBookByTitle(title);
+    }
+
+    public int updateBookByTitle(String title, Book book) {
+        return bookDao.updateBookByTitle(title, book);
+    }
 
 }
