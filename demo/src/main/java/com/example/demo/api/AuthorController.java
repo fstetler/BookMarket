@@ -39,7 +39,8 @@ public class AuthorController {
     }
 
     @PutMapping(path = "{pseudonym}")
-    public void updateAuthorByPseudonym(@PathVariable("pseudonym") String pseudonym, @RequestBody Author author) {
+    public void updateAuthorByPseudonym(@PathVariable("pseudonym") String pseudonym,
+                                        @RequestBody Author author) {
         authorService.updateAuthorByPseudonym(pseudonym, author);
     }
 

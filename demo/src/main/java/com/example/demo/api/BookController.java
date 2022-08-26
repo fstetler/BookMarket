@@ -1,8 +1,6 @@
 package com.example.demo.api;
 
-import com.example.demo.model.Author;
 import com.example.demo.model.Book;
-import com.example.demo.service.AuthorService;
 import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +38,8 @@ public class BookController {
         bookService.deleteBookByTitle(title);
     }
 
-    @PutMapping
-    public void updateBookByTitle(@PathVariable("pseudonym") String pseudonym, @RequestBody Book book) {
-        bookService.updateBookByTitle(pseudonym, book);
+    @PutMapping(path = "{title}")
+    public void updateBookByTitle(@PathVariable("title") String title, @RequestBody Book book) {
+        bookService.updateBookByTitle(title, book);
     }
 }

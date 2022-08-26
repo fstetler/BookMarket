@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository("dao")
 public class AuthorDataAccessService implements AuthorDao, BookDao {
@@ -73,12 +72,12 @@ public class AuthorDataAccessService implements AuthorDao, BookDao {
     }
 
     @Override
-    public int updateBookByTitle(String title, Book book) {
+    public int updateBookByTitle(String title, Book update) {
         return selectBookByTitle(title)
-                .map(p -> {
-                    int indexOfBookToDelete = DBBook.indexOf(book);
-                    if (indexOfBookToDelete >= 0) {
-                        DBBook.set(indexOfBookToDelete, book);
+                .map(book -> {
+                    int indexOfBookToUpdate = DBBook.indexOf(book);
+                    if (indexOfBookToUpdate >= 0) {
+                        DBBook.set(indexOfBookToUpdate, new Book(title, update.getDescription(), update.getAuthor(), update.getPrice()));
                         return 1;
                     }
                     return 0;
@@ -87,18 +86,16 @@ public class AuthorDataAccessService implements AuthorDao, BookDao {
     }
 
     @Override
-    public int updateAuthorByPseudonym(String pseudonym, Author author) {
+    public int updateAuthorByPseudonym(String pseudonym, Author update) {
         return selectAuthorByPseudonym(pseudonym)
-                .map(a -> {
-                    int indexOfAuthorToDelete = DBAuthor.indexOf(author);
-                    if (indexOfAuthorToDelete >= 0) {
-                        DBAuthor.set(indexOfAuthorToDelete, author);
+                .map(author -> {
+                    int indexOfAuthorToUpdate = DBAuthor.indexOf(author);
+                    if (indexOfAuthorToUpdate >= 0) {
+                        DBAuthor.set(indexOfAuthorToUpdate, new Author(update.getName(), pseudonym));
                         return 1;
                     }
                     return 0;
                 })
                 .orElse(0);
     }
-
-
 }

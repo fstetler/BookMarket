@@ -27,8 +27,8 @@ public class AuthorService {
         return authorDao.selectAllAuthors();
     }
 
-    public Optional<Author> getAuthorByPseudonym(String pseudynom) {
-        return authorDao.selectAuthorByPseudonym(pseudynom);
+    public Optional<Author> getAuthorByPseudonym(String pseudonym) {
+        return authorDao.selectAuthorByPseudonym(pseudonym);
     }
 
     public int deleteAuthorByPseudonym(String pseudonym) {
