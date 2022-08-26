@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository("dao")
-public class AuthorDataAccessService implements AuthorDao, BookDao {
+public class DataAccessService implements AuthorDao, BookDao {
 
     private static List<Author> DBAuthor = new ArrayList<>();
     private static List<Book> DBBook = new ArrayList<>();
@@ -20,7 +20,6 @@ public class AuthorDataAccessService implements AuthorDao, BookDao {
         return 1;
     }
 
-    //TODO change book price type from String to int, int doesnt work in Postman for some reason
     @Override
     public int insertBook(Book book) {
         DBBook.add(new Book(book.getTitle(), book.getDescription(), book.getAuthor(), book.getPrice()));
