@@ -7,10 +7,10 @@ public class Book {
     private final String title;
     private final String description;
     private final String author;
-    private final String price;
+    private final Integer price;
 
     public Book(@JsonProperty("title") String title, @JsonProperty("description") String description,
-                @JsonProperty("author") String author, @JsonProperty("price") String price) {
+                @JsonProperty("author") String author, @JsonProperty("price") Integer price) {
         this.title = title;
         this.description = description;
         this.author = author;
@@ -29,7 +29,7 @@ public class Book {
         return author;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
