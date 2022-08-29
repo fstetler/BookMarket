@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class that implements all the features
+ */
 @Repository("dao")
 public class DataAccessService implements AuthorDao, BookDao {
 

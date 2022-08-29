@@ -2,6 +2,9 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class for Book properties and variables
+ */
 public class Book {
 
     private final String title;

@@ -5,6 +5,9 @@ import com.example.demo.model.Author;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Interface for Author
+ */
 public interface AuthorDao {
 
     int insertAuthor(Author author);

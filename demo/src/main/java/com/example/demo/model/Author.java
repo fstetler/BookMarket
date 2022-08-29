@@ -2,6 +2,9 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class for Author properties and variables
+ */
 public class Author {
 
     private final String name;

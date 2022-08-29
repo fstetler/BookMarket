@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller class for author
+ */
 @RequestMapping("author")
 @RestController
 public class AuthorController {

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class for Book
+ */
 @Service
 public class BookService {
 
@@ -27,6 +30,7 @@ public class BookService {
         return bookDao.selectAllBooks();
     }
 
+    // Optional lets handle a potential null
     public Optional<Book> getBookByTitle(String title) {
         return bookDao.selectBookByTitle(title);
     }

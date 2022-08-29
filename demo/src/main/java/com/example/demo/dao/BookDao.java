@@ -5,6 +5,9 @@ import com.example.demo.model.Book;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Interface for book
+ */
 public interface BookDao {
 
     int insertBook(Book book);
